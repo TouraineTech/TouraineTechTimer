@@ -43,12 +43,11 @@ const val DURATION_50_MINUTES: Long = 3000000
 const val QUESTION_TIME_50_MINUTES: Long = 300000
 const val DURATION_15_MINUTES: Long = 900000
 const val QUESTION_TIME_15_MINUTES: Long = 0
+const val A_BUTTON_PIN_NAME = "GPIO6_IO14"
+const val B_BUTTON_PIN_NAME = "GPIO6_IO15"
+const val C_BUTTON_PIN_NAME = "GPIO2_IO07"
 
 class MainActivity : Activity() {
-
-    private val A_BUTTON_PIN_NAME = "GPIO6_IO14"
-    private val B_BUTTON_PIN_NAME = "GPIO6_IO15"
-    private val C_BUTTON_PIN_NAME = "GPIO2_IO07"
 
     var timerTextView: TextView? = null
     var duration: Long = DURATION_50_MINUTES
@@ -99,20 +98,20 @@ class MainActivity : Activity() {
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        when (keyCode) {
+        return when (keyCode) {
             KeyEvent.KEYCODE_A -> {
                 startStopFunction(findViewById(R.id.buttonStart))
-                return true
+                true
             }
             KeyEvent.KEYCODE_B -> {
                 setTimerValues(DURATION_50_MINUTES, QUESTION_TIME_50_MINUTES)
-                return true
+                true
             }
             KeyEvent.KEYCODE_C -> {
                 setTimerValues(DURATION_15_MINUTES, QUESTION_TIME_15_MINUTES)
-                return true
+                true
             }
-            else -> return super.onKeyDown(keyCode, event)
+            else -> super.onKeyDown(keyCode, event)
         }
     }
 
@@ -156,7 +155,7 @@ class MainActivity : Activity() {
         }
     }
 
-    fun getCountDown(): CountDownTimer {
+    private fun getCountDown(): CountDownTimer {
         return object: CountDownTimer(duration, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timerTextView!!.text = getTimeStringFromMillis(millisUntilFinished)
