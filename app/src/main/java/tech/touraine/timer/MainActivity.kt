@@ -1,22 +1,15 @@
 package tech.touraine.timer
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
 import android.view.KeyEvent
 import android.widget.TextView
 import android.widget.Button
 import android.view.animation.Animation
 import android.view.animation.AlphaAnimation
-import com.google.android.things.contrib.driver.button.ButtonInputDriver
-import com.google.android.things.pio.PeripheralManager
-import java.io.IOException
-import com.google.android.things.contrib.driver.button.Button.LogicState
-
-
+import java.io.Closeable
 
 
 /**
@@ -43,9 +36,6 @@ const val DURATION_50_MINUTES: Long = 3000000
 const val QUESTION_TIME_50_MINUTES: Long = 300000
 const val DURATION_15_MINUTES: Long = 900000
 const val QUESTION_TIME_15_MINUTES: Long = 0
-const val A_BUTTON_PIN_NAME = "GPIO6_IO14"
-const val B_BUTTON_PIN_NAME = "GPIO6_IO15"
-const val C_BUTTON_PIN_NAME = "GPIO2_IO07"
 
 class MainActivity : Activity() {
 
@@ -54,23 +44,23 @@ class MainActivity : Activity() {
     var questionTime: Long = QUESTION_TIME_50_MINUTES
     var countDownTimer: CountDownTimer? = null
     var running: Boolean = false
-    lateinit var aButton: ButtonInputDriver
-    lateinit var bButton: ButtonInputDriver
-    lateinit var cButton: ButtonInputDriver
+    var once:Boolean = false
+    private lateinit var buttons: Buttons
+    private lateinit var buzzer: Buzzer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initGpio()
+        buttons = Buttons()
+        buzzer = Buzzer()
         setContentView(R.layout.activity_main)
         timerTextView = findViewById(R.id.timerTextView)
         timerTextView!!.text = getTimeStringFromMillis(duration)
 
         val startStopButton = findViewById<Button>(R.id.buttonStart)
         startStopButton.text = getString(R.string.start)
-        startStopButton.setOnClickListener { v ->
-            val button1 = v as Button
-            startStopFunction(button1)
+        startStopButton.setOnClickListener {
+            startStopFunction(it as Button)
         }
 
         findViewById<Button>(R.id.button50Minutes).setOnClickListener {
@@ -84,20 +74,11 @@ class MainActivity : Activity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        aButton.unregister()
-        bButton.unregister()
-        cButton.unregister()
-        try {
-            aButton.close()
-            bButton.close()
-            cButton.close()
-        } catch (e: IOException) {
-            Log.w(TAG, "Error closing GPIO", e)
-        }
-
+        arrayOf(buttons, buzzer).forEach(Closeable::close)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
+        buzzer.play(71.toDouble(), 300 * 0.8)
         return when (keyCode) {
             KeyEvent.KEYCODE_A -> {
                 startStopFunction(findViewById(R.id.buttonStart))
@@ -130,22 +111,6 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun initGpio() {
-        val pioManager = PeripheralManager.getInstance()
-        Log.d(TAG, "Available GPIO: " + pioManager.gpioList)
-
-        try {
-            aButton = ButtonInputDriver(A_BUTTON_PIN_NAME, LogicState.PRESSED_WHEN_LOW, KeyEvent.KEYCODE_A)
-            aButton.register()
-            bButton = ButtonInputDriver(B_BUTTON_PIN_NAME, LogicState.PRESSED_WHEN_LOW, KeyEvent.KEYCODE_B)
-            bButton.register()
-            cButton = ButtonInputDriver(C_BUTTON_PIN_NAME, LogicState.PRESSED_WHEN_LOW, KeyEvent.KEYCODE_C)
-            cButton.register()
-        } catch (e: IOException) {
-            Log.e(TAG, "Error opening button driver", e);
-        }
-    }
-
     private fun setTimerValues(_duration: Long, _questionTime: Long) {
         duration = _duration
         questionTime = _questionTime
@@ -160,15 +125,19 @@ class MainActivity : Activity() {
             override fun onTick(millisUntilFinished: Long) {
                 timerTextView!!.text = getTimeStringFromMillis(millisUntilFinished)
                 running = true
-                if (millisUntilFinished < questionTime) {
+                if (millisUntilFinished < questionTime && !once) {
+                    once = true
                     timerTextView!!.startAnimation(alphaAnimation(1500))
+                    buzzer.play(71.toDouble(), 5000.0)
                 }
             }
 
             override fun onFinish() {
                 timerTextView!!.setTextColor(Color.RED)
                 timerTextView!!.startAnimation(alphaAnimation(500))
+                buzzer.play(71.toDouble(), 20000.0)
                 running = false
+                once = false
             }
         }
     }
