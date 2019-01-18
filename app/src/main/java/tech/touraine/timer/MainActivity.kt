@@ -58,7 +58,7 @@ class MainActivity : Activity() {
         timerTextView!!.text = getTimeStringFromMillis(duration)
 
         val startStopButton = findViewById<Button>(R.id.buttonStart)
-        startStopButton.text = getString(R.string.start)
+        startStopButton.text = getString(R.string.start_Btn)
         startStopButton.setOnClickListener {
             startStopFunction(it as Button)
         }
@@ -97,15 +97,15 @@ class MainActivity : Activity() {
     }
 
     private fun startStopFunction(button1: Button) {
-        if (getString(R.string.stop) == button1.text) {
-            button1.text = getString(R.string.start)
+        if (getString(R.string.stop_Btn) == button1.text) {
+            button1.text = getString(R.string.start_Btn)
             countDownTimer!!.cancel()
             timerTextView!!.clearAnimation()
             timerTextView!!.setTextColor(Color.parseColor("#808080"))
             timerTextView!!.text = getTimeStringFromMillis(duration)
             running = false
         } else {
-            button1.text = getString(R.string.stop)
+            button1.text = getString(R.string.stop_Btn)
             countDownTimer = getCountDown()
             countDownTimer!!.start()
         }
