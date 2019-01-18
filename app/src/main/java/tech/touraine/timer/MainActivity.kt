@@ -39,12 +39,12 @@ const val QUESTION_TIME_15_MINUTES: Long = 0
 
 class MainActivity : Activity() {
 
-    var timerTextView: TextView? = null
-    var duration: Long = DURATION_50_MINUTES
-    var questionTime: Long = QUESTION_TIME_50_MINUTES
-    var countDownTimer: CountDownTimer? = null
-    var running: Boolean = false
-    var once:Boolean = false
+    private var timerTextView: TextView? = null
+    private var duration: Long = DURATION_50_MINUTES
+    private var questionTime: Long = QUESTION_TIME_50_MINUTES
+    private var countDownTimer: CountDownTimer? = null
+    private var running: Boolean = false
+    private var once:Boolean = false
     private lateinit var buttons: Buttons
     private lateinit var buzzer: Buzzer
 
@@ -70,6 +70,11 @@ class MainActivity : Activity() {
         findViewById<Button>(R.id.button15Minutes).setOnClickListener {
             setTimerValues(DURATION_15_MINUTES, QUESTION_TIME_15_MINUTES)
         }
+
+        val buttonMinus1Minutes: Button = findViewById(R.id.buttonMinus1Minutes)
+        buttonMinus1Minutes.setOnClickListener { setTimerValues(duration - 60000, questionTime) }
+        val buttonPlus1Minutes: Button = findViewById(R.id.buttonPlus1Minutes)
+        buttonPlus1Minutes.setOnClickListener { setTimerValues(duration + 60000, questionTime) }
     }
 
     override fun onDestroy() {

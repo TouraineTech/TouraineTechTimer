@@ -6,4 +6,6 @@
     <string name="_15_00_Btn">15:00 (C)</string>
     <string name="_50_00">50:00</string>
     <string name="_50_00_Btn">50:00 (B)</string>
+    <string name="plus1MinuteBtn">+ 1 Min</string>
+    <string name="minus1MinuteBtn">- 1 Min</string>
 </resources>
