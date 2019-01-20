@@ -118,7 +118,15 @@ class AutoTimerActivity : Activity() {
         val nextTalkTime = times.times[currentTimeIndex]
         val nextTalk = talksMap[currentRoomIndex, currentTimeIndex +1]
         findViewById<TextView>(R.id.nextTalkTextView).text = if (nextTalk is Talk)
-            ((getString(R.string.nextTalk) + nextTalk.name).subSequence(0,72).toString() + "...")
+            (
+                (getString(R.string.nextTalk) +
+                    if (nextTalk.name.length > 55)
+                    nextTalk.name.subSequence(0,55).toString() + "..."
+                    else
+                    nextTalk.name
+                ) + " " + getString(R.string.bySpeaker) + " " +
+                        nextTalk.speakers.map { speakersMap[it]!!.name }
+            )
             else ""
         duration = LocalTime.now()
                 .until(LocalTime.parse(nextTalkTime.time, DateTimeFormatter.ofPattern("HH:mm")),
