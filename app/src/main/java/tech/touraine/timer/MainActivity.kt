@@ -87,7 +87,7 @@ class MainActivity : Activity() {
 
         findViewById<Button>(R.id.autoTimer).setOnClickListener {
             arrayOf(buttons, buzzer).forEach(Closeable::close)
-            startActivity(Intent(this, AutoTimerActivity::class.java))
+            startActivity(Intent(this, RoomChoiceActivity::class.java))
         }
     }
 

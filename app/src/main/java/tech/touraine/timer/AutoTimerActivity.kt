@@ -70,6 +70,9 @@ class AutoTimerActivity : Activity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
         loadResources()
+        currentRoomIndex = intent.getIntExtra("roomNumber", 1)
+
+        findViewById<TextView>(R.id.currentRoomTextView).text = times.rooms[currentRoomIndex - 1]
 
         currentTimeIndex = initCurrentTimeIndex() - 1 // minus one because startNextTimer increment currentTimeIndex
         startNextTimer()
@@ -99,6 +102,7 @@ class AutoTimerActivity : Activity() {
 
             override fun onFinish() {
                 timerTextView.setTextColor(Color.RED)
+                timerTextView.clearAnimation()
                 running = false
                 once = false
                 startNextTimer()

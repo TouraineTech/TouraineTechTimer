@@ -11,5 +11,7 @@
     <string name="autoTimer">Auto</string>
     <string name="manualTimer">Manual (A)</string>
     <string name="nextTalk">Prochain sujet : </string>
-
+    <string name="turing">Turing (A)</string>
+    <string name="pascal">Pascal (B)</string>
+    <string name="lovelace">Lovelace (C)</string>
 </resources>
