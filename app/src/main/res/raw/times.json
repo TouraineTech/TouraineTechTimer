@@ -1,0 +1,94 @@
+{
+  "times": [
+    {
+      "time": "08:00",
+      "talk": false
+    },
+    {
+      "time": "09:00",
+      "talk": true
+    },
+    {
+      "time": "09:50",
+      "talk": false
+    },
+    {
+      "time": "10:10",
+      "talk": true
+    },
+    {
+      "time": "11:00",
+      "talk": false
+    },
+    {
+      "time": "11:10",
+      "talk": true
+    },
+    {
+      "time": "12:00",
+      "talk": false
+    },
+    {
+      "time": "12:20",
+      "talk": true
+    },
+    {
+      "time": "12:35",
+      "talk": false
+    },
+    {
+      "time": "12:45",
+      "talk": true
+    },
+    {
+      "time": "13:00",
+      "talk": false
+    },
+    {
+      "time": "13:30",
+      "talk": true
+    },
+    {
+      "time": "14:20",
+      "talk": false
+    },
+    {
+      "time": "14:30",
+      "talk": true
+    },
+    {
+      "time": "15:20",
+      "talk": false
+    },
+    {
+      "time": "15:45",
+      "talk": true
+    },
+    {
+      "time": "16:35",
+      "talk": false
+    },
+    {
+      "time": "16:45",
+      "talk": true
+    },
+    {
+      "time": "17:35",
+      "talk": false
+    },
+    {
+      "time": "17:40",
+      "talk": true
+    },
+    {
+      "time": "18:00",
+      "talk": false
+    }
+  ],
+  "rooms": [
+    "Turing",
+    "Pascal",
+    "LoveLace",
+    "TD1 (premier étage)"
+  ]
+}

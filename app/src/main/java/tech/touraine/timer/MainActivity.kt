@@ -1,15 +1,20 @@
 package tech.touraine.timer
 
 import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.TextView
 import android.widget.Button
 import android.view.animation.Animation
 import android.view.animation.AlphaAnimation
 import java.io.Closeable
+import com.google.android.things.device.TimeManager
+import java.io.Console
+import java.util.*
 
 
 /**
@@ -39,10 +44,10 @@ const val QUESTION_TIME_15_MINUTES: Long = 0
 
 class MainActivity : Activity() {
 
-    private var timerTextView: TextView? = null
+    private lateinit var timerTextView: TextView
     private var duration: Long = DURATION_50_MINUTES
     private var questionTime: Long = QUESTION_TIME_50_MINUTES
-    private var countDownTimer: CountDownTimer? = null
+    private lateinit var countDownTimer: CountDownTimer
     private var running: Boolean = false
     private var once:Boolean = false
     private lateinit var buttons: Buttons
@@ -51,11 +56,15 @@ class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val timeManager = TimeManager.getInstance()
+        timeManager.setTimeFormat(TimeManager.FORMAT_24)
+        timeManager.setTimeZone("Europe/Paris")
+
         buttons = Buttons()
         buzzer = Buzzer()
         setContentView(R.layout.activity_main)
         timerTextView = findViewById(R.id.timerTextView)
-        timerTextView!!.text = getTimeStringFromMillis(duration)
+        timerTextView.text = getTimeStringFromMillis(duration)
 
         val startStopButton = findViewById<Button>(R.id.buttonStart)
         startStopButton.text = getString(R.string.start_Btn)
@@ -75,6 +84,11 @@ class MainActivity : Activity() {
         buttonMinus1Minutes.setOnClickListener { setTimerValues(duration - 60000, questionTime) }
         val buttonPlus1Minutes: Button = findViewById(R.id.buttonPlus1Minutes)
         buttonPlus1Minutes.setOnClickListener { setTimerValues(duration + 60000, questionTime) }
+
+        findViewById<Button>(R.id.autoTimer).setOnClickListener {
+            arrayOf(buttons, buzzer).forEach(Closeable::close)
+            startActivity(Intent(this, AutoTimerActivity::class.java))
+        }
     }
 
     override fun onDestroy() {
@@ -104,42 +118,42 @@ class MainActivity : Activity() {
     private fun startStopFunction(button1: Button) {
         if (getString(R.string.stop_Btn) == button1.text) {
             button1.text = getString(R.string.start_Btn)
-            countDownTimer!!.cancel()
-            timerTextView!!.clearAnimation()
-            timerTextView!!.setTextColor(Color.parseColor("#808080"))
-            timerTextView!!.text = getTimeStringFromMillis(duration)
+            countDownTimer.cancel()
+            timerTextView.clearAnimation()
+            timerTextView.setTextColor(Color.parseColor("#808080"))
+            timerTextView.text = getTimeStringFromMillis(duration)
             running = false
         } else {
             button1.text = getString(R.string.stop_Btn)
             countDownTimer = getCountDown()
-            countDownTimer!!.start()
+            countDownTimer.start()
         }
     }
 
     private fun setTimerValues(_duration: Long, _questionTime: Long) {
         duration = _duration
         questionTime = _questionTime
-        timerTextView!!.clearAnimation()
+        timerTextView.clearAnimation()
         if (!running) {
-            timerTextView!!.text = getTimeStringFromMillis(duration)
+            timerTextView.text = getTimeStringFromMillis(duration)
         }
     }
 
     private fun getCountDown(): CountDownTimer {
         return object: CountDownTimer(duration, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-                timerTextView!!.text = getTimeStringFromMillis(millisUntilFinished)
+                timerTextView.text = getTimeStringFromMillis(millisUntilFinished)
                 running = true
                 if (millisUntilFinished < questionTime && !once) {
                     once = true
-                    timerTextView!!.startAnimation(alphaAnimation(1500))
+                    timerTextView.startAnimation(alphaAnimation(1500))
                     buzzer.play(71.toDouble(), 5000.0)
                 }
             }
 
             override fun onFinish() {
-                timerTextView!!.setTextColor(Color.RED)
-                timerTextView!!.startAnimation(alphaAnimation(500))
+                timerTextView.setTextColor(Color.RED)
+                timerTextView.startAnimation(alphaAnimation(500))
                 buzzer.play(71.toDouble(), 20000.0)
                 running = false
                 once = false
