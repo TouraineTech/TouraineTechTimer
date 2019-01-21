@@ -72,7 +72,7 @@ class AutoTimerActivity : Activity() {
         loadResources()
         currentRoomIndex = intent.getIntExtra("roomNumber", 1)
 
-        findViewById<TextView>(R.id.currentRoomTextView).text = "Salle \n" + times.rooms[currentRoomIndex - 1]
+        findViewById<TextView>(R.id.currentRoomTextView).text = getString(R.string.roomName,times.rooms[currentRoomIndex - 1])
 
         currentTimeIndex = initCurrentTimeIndex() - 1 // minus one because startNextTimer increment currentTimeIndex
         startNextTimer()

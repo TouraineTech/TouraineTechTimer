@@ -15,4 +15,5 @@
     <string name="turing">Turing (A)</string>
     <string name="pascal">Pascal (B)</string>
     <string name="lovelace">Lovelace (C)</string>
+    <string name="roomName">Salle \n%1$s</string>
 </resources>
