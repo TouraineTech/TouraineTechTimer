@@ -4,19 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/darkBackground"
     tools:context=".MainActivity">
-
-    <TextClock
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="64sp"
-        android:layout_marginTop="8dp"
-        android:format24Hour="kk:mm"
-        android:format12Hour="kk:mm"
-        android:timeZone="GMT+1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/timerTextView"
@@ -25,7 +14,24 @@
         android:textAlignment="center"
         android:textSize="288sp"
         android:textStyle="bold"
+        android:text="@string/_15_00"
+        style="@style/whiteText"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        style="@style/greenText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:format12Hour="kk:mm"
+        android:format24Hour="kk:mm"
+        android:text="@string/_15_00"
+        android:textSize="64sp"
+        android:timeZone="GMT+1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,8 +40,8 @@
         android:id="@+id/buttonStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:text="@string/start_Btn"
+        style="@style/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -44,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/_50_00_Btn"
+        style="@style/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -52,8 +59,8 @@
         android:id="@+id/button15Minutes"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="5dp"
         android:text="@string/_15_00_Btn"
+        style="@style/button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -61,9 +68,8 @@
         android:id="@+id/buttonPlus1Minutes"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
         android:text="@string/plus1MinuteBtn"
+        style="@style/button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -71,8 +77,8 @@
         android:id="@+id/buttonMinus1Minutes"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginEnd="5dp"
         android:text="@string/minus1MinuteBtn"
+        style="@style/button"
         app:layout_constraintTop_toBottomOf="@+id/buttonPlus1Minutes"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -80,21 +86,19 @@
         android:id="@+id/autoTimer"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
         android:text="@string/autoTimer"
+        style="@style/button"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="200dp"
-        android:layout_height="85dp"
+        android:layout_height="110dp"
         android:src="@drawable/logo"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        style="@style/whiteBackground"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@id/autoTimer"
+        app:layout_constraintStart_toStartOf="parent"
         />
 
 </android.support.constraint.ConstraintLayout>
