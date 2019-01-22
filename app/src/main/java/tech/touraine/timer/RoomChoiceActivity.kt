@@ -40,21 +40,21 @@ class RoomChoiceActivity : Activity() {
         buzzer = Buzzer()
 
         findViewById<Button>(R.id.room1Btn).setOnClickListener {
-            launchAutoTimerActivityWithRoomNumber(1)
+            launchAutoTimerActivityWithRoomNumber("Turing")
         }
         findViewById<Button>(R.id.room2Btn).setOnClickListener {
-            launchAutoTimerActivityWithRoomNumber(2)
+            launchAutoTimerActivityWithRoomNumber("Pascal")
         }
         findViewById<Button>(R.id.room3Btn).setOnClickListener {
-            launchAutoTimerActivityWithRoomNumber(3)
+            launchAutoTimerActivityWithRoomNumber("LoveLace")
         }
 
     }
 
-    private fun launchAutoTimerActivityWithRoomNumber(roomNumber: Int) {
+    private fun launchAutoTimerActivityWithRoomNumber(roomNumber: String) {
         arrayOf(buttons, buzzer).forEach(Closeable::close)
         val intent = Intent(this, AutoTimerActivity::class.java)
-        intent.putExtra("roomNumber", roomNumber)
+        intent.putExtra("roomName", roomNumber)
         startActivity(intent)
     }
 
@@ -62,15 +62,15 @@ class RoomChoiceActivity : Activity() {
         buzzer.play(71.toDouble(), 300 * 0.8)
         return when (keyCode) {
             KeyEvent.KEYCODE_A -> {
-                launchAutoTimerActivityWithRoomNumber(1)
+                launchAutoTimerActivityWithRoomNumber("Turing")
                 true
             }
             KeyEvent.KEYCODE_B -> {
-                launchAutoTimerActivityWithRoomNumber(2)
+                launchAutoTimerActivityWithRoomNumber("Pascal")
                 true
             }
             KeyEvent.KEYCODE_C -> {
-                launchAutoTimerActivityWithRoomNumber(3)
+                launchAutoTimerActivityWithRoomNumber("LoveLace")
                 true
             }
             else -> super.onKeyDown(keyCode, event)
