@@ -19,7 +19,8 @@
     {"time": "16:35", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
     {"time": "16:45", "talk": {"id": "5GmnOuRUqsEDDnl3VVRA", "name": "Choisir entre une API RPC, SOAP, REST, GraphQL? Et si le problème était ailleurs ?", "speakers": ["ysFOUdvTjwbmvXr4pHABwdhC2qY2"]}},
     {"time": "17:35", "talk": {"id": "break","name": "This is the end","speakers": []}},
-    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}}
+    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}},
+    {"time": "18:00", "talk": {"id": "goodBye","name": "goodBye","speakers": []}}
   ],
   "Pascal": [
     {"time": "08:00", "talk": {"id": "welcome","name": "\uD83D\uDC4B Accueil et petit déjeuner ","speakers": []}},
@@ -41,7 +42,8 @@
     {"time": "16:35", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
     {"time": "16:45", "talk": {"id": "PFIOMOLTUgEdwu4ESijm", "name": "Devenez accessible !", "speakers": ["u3FdKFoMCSZ8EZ083Kncdi1019X2"]}},
     {"time": "17:35", "talk": {"id": "break","name": "This is the end","speakers": []}},
-    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}}
+    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}},
+    {"time": "18:00", "talk": {"id": "goodBye","name": "goodBye","speakers": []}}
   ],
   "LoveLace": [
     {"time": "08:00", "talk": {"id": "welcome","name": "\uD83D\uDC4B Accueil et petit déjeuner ","speakers": []}},
@@ -63,6 +65,7 @@
     {"time": "16:35", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
     {"time": "16:45", "talk": {"id": "owtdxLKFshDxxt3T2Zc3", "name": "Intégrez MultiChain à votre projet Java en quelques minutes", "speakers": ["NJFedoBgiOWGuBbcT6Nh8ZbwXcn2"]}},
     {"time": "17:35", "talk": {"id": "break","name": "This is the end","speakers": []}},
-    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}}
+    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}},
+    {"time": "18:00", "talk": {"id": "goodBye","name": "goodBye","speakers": []}}
   ]
 }
