@@ -5,7 +5,7 @@
     {"time": "09:50", "talk": {"id": "break","name": "\uD83E\uDD50 Suite du petit déjeuner ","speakers": []}},
     {"time": "10:10", "talk": {"id": "o9KtP8ZrZ130zLZPzdqn","name": "Mon premier service en Rust","speakers": ["Zp3MwNioZ5TglJfR4UPR1jBkoAj1"]}},
     {"time": "11:00", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
-    {"time": "11:10", "talk": {"id": "OAx0UfebSJQASUjcXZIn","name": "Un peu de sociologie, appliquée à notre métier de développeur","speakers": ["JiYTvOjns7ggKQCY8jV5eR8Rw8k1"]}},
+    {"time": "11:10", "talk": {"id": "YcEtI1UV5Pj9ytQSOUeE", "name": "Comme Mickey dans Fantasia, devenez un apprenti sorcier de l'intégration continue (et du déploiement) avec les GitLab Runners et OpenFaaS", "speakers": ["E5FaOXhwPVdJhu1zHQ3fKSVSrTd2"]}},
     {"time": "12:00", "talk": {"id": "break","name": "\uD83C\uDF7D Pause déjeuner ","speakers": []}},
     {"time": "12:20", "talk": {"id": "6lzGoQwIVhyYQTSHce99", "name": "CORS, XSS, CSRF, SQL injection  #BackToTheBasics", "speakers": ["jyGjaD4PluQG5VMVsjFVsNiIEMX2"]}},
     {"time": "12:35", "talk": {"id": "break","name": "\uD83C\uDF7D Pause déjeuner ","speakers": []}},
@@ -15,7 +15,7 @@
     {"time": "14:20", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
     {"time": "14:30", "talk": {"id": "sEyFkiS6aHzlXuWo6Z8a", "name": "Démystifions les CSS Custom Properties", "speakers": ["ID1KHqoOCeRrwgtGqS2QAgJnyvm2","MKCVoyKPwHb8Cd0uTe2erKbhPqf1"]}},
     {"time": "15:20", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
-    {"time": "15:45", "talk": {"id": "YcEtI1UV5Pj9ytQSOUeE", "name": "Comme Mickey dans Fantasia, devenez un apprenti sorcier de l'intégration continue (et du déploiement) avec les GitLab Runners et OpenFaaS", "speakers": ["E5FaOXhwPVdJhu1zHQ3fKSVSrTd2"]}},
+    {"time": "15:45", "talk": {"id": "OAx0UfebSJQASUjcXZIn","name": "Un peu de sociologie, appliquée à notre métier de développeur","speakers": ["JiYTvOjns7ggKQCY8jV5eR8Rw8k1"]}},
     {"time": "16:35", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
     {"time": "16:45", "talk": {"id": "5GmnOuRUqsEDDnl3VVRA", "name": "Choisir entre une API RPC, SOAP, REST, GraphQL? Et si le problème était ailleurs ?", "speakers": ["ysFOUdvTjwbmvXr4pHABwdhC2qY2"]}},
     {"time": "17:35", "talk": {"id": "keynoteend", "name": "Keynote de clôture"}}
