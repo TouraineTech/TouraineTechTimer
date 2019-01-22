@@ -18,7 +18,8 @@
     {"time": "15:45", "talk": {"id": "OAx0UfebSJQASUjcXZIn","name": "Un peu de sociologie, appliquée à notre métier de développeur","speakers": ["JiYTvOjns7ggKQCY8jV5eR8Rw8k1"]}},
     {"time": "16:35", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
     {"time": "16:45", "talk": {"id": "5GmnOuRUqsEDDnl3VVRA", "name": "Choisir entre une API RPC, SOAP, REST, GraphQL? Et si le problème était ailleurs ?", "speakers": ["ysFOUdvTjwbmvXr4pHABwdhC2qY2"]}},
-    {"time": "17:35", "talk": {"id": "keynoteend", "name": "Keynote de clôture"}}
+    {"time": "17:35", "talk": {"id": "break","name": "This is the end","speakers": []}},
+    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}}
   ],
   "Pascal": [
     {"time": "08:00", "talk": {"id": "welcome","name": "\uD83D\uDC4B Accueil et petit déjeuner ","speakers": []}},
@@ -39,7 +40,8 @@
     {"time": "15:45", "talk": {"id": "SgXJQlGerZoTySFj1qSh", "name": "Symfony 4 : un framework PHP moderne pour travailler plus vite ", "speakers": ["lexF0MhyQhNbPRkHZEqigFLQf1u1"]}},
     {"time": "16:35", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
     {"time": "16:45", "talk": {"id": "PFIOMOLTUgEdwu4ESijm", "name": "Devenez accessible !", "speakers": ["u3FdKFoMCSZ8EZ083Kncdi1019X2"]}},
-    {"time": "17:35", "talk": {"id": "keynoteend", "name": "Keynote de clôture"}}
+    {"time": "17:35", "talk": {"id": "break","name": "This is the end","speakers": []}},
+    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}}
   ],
   "LoveLace": [
     {"time": "08:00", "talk": {"id": "welcome","name": "\uD83D\uDC4B Accueil et petit déjeuner ","speakers": []}},
@@ -60,6 +62,7 @@
     {"time": "15:45", "talk": {"id": "qfQjwEtmjTF9mfDk2G7o", "name": "Contrôle vocal DIY", "speakers": ["rS1IJF93PsN2cKJ642Iov5YL34W2"]}},
     {"time": "16:35", "talk": {"id": "break","name": "☕ Pause café ","speakers": []}},
     {"time": "16:45", "talk": {"id": "owtdxLKFshDxxt3T2Zc3", "name": "Intégrez MultiChain à votre projet Java en quelques minutes", "speakers": ["NJFedoBgiOWGuBbcT6Nh8ZbwXcn2"]}},
-    {"time": "17:35", "talk": {"id": "keynoteend", "name": "Keynote de clôture"}}
+    {"time": "17:35", "talk": {"id": "break","name": "This is the end","speakers": []}},
+    {"time": "17:40", "talk": {"id": "keynoteend", "name": "Keynote de clôture","speakers": []}}
   ]
 }
