@@ -47,7 +47,7 @@ class AutoTimerActivity : Activity() {
     private lateinit var rooms: Rooms
     private lateinit var room: Array<Time>
     private var duration: Long = 10000
-    private var questionTime: Long = 5000000
+    private var questionTime: Long = 300000
     private val speakersMap = HashMap<String, Speaker>()
     private lateinit var countDownTimer: CountDownTimer
 
