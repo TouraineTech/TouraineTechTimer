@@ -97,11 +97,12 @@ class AutoTimerActivity : Activity() {
                 if (millisUntilFinished < questionTime && !once) {
                     once = true
                     timerTextView.startAnimation(alphaAnimation(1500))
-                    buzzer.play(71.toDouble(), 5000.0)
+                    buzzer.play(71.toDouble(), 3000.0)
                 }
             }
 
             override fun onFinish() {
+                buzzer.play(71.toDouble(), 3000.0)
                 timerTextView.setTextColor(Color.RED)
                 timerTextView.clearAnimation()
                 running = false
