@@ -29,7 +29,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     compileOnly 'com.google.android.things:androidthings:+'
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'com.google.android.things.contrib:driver-button:1.0'
     implementation 'com.google.android.things.contrib:driver-pwmspeaker:1.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'commons-collections:commons-collections:3.2.2'
 }

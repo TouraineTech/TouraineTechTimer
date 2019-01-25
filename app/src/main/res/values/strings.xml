@@ -8,4 +8,12 @@
     <string name="_50_00_Btn">50:00 (B)</string>
     <string name="plus1MinuteBtn">+ 1 Min</string>
     <string name="minus1MinuteBtn">- 1 Min</string>
+    <string name="autoTimer">Auto</string>
+    <string name="manualTimer">Manual (A)</string>
+    <string name="nextTalk">Prochain sujet : </string>
+    <string name="bySpeaker"> par </string>
+    <string name="turing">Turing (A)</string>
+    <string name="pascal">Pascal (B)</string>
+    <string name="lovelace">Lovelace (C)</string>
+    <string name="roomName">Salle \n%1$s</string>
 </resources>
