@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="288sp"
+        android:gravity="center"
         android:textStyle="bold"
         android:text="@string/_15_00"
         style="@style/whiteText"
