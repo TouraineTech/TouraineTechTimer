@@ -24,21 +24,26 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <!-- Make this the first activity that is displayed when the device boots. -->
-            <!--            <intent-filter>
-                            <action android:name="android.intent.action.MAIN"/>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-                            <category android:name="android.intent.category.HOME"/>
-                            <category android:name="android.intent.category.DEFAULT"/>
-                        </intent-filter>
-            -->
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".AutoTimerActivity"
-            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">
-        </activity>
-        <activity android:name=".RoomChoiceActivity"
-            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">
-        </activity>
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"></activity>
+        <activity
+            android:name=".RoomChoiceActivity"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"></activity>
+
+        <receiver android:name=".TimeChangeBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
