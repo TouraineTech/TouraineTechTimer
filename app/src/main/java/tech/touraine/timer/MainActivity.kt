@@ -5,15 +5,15 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
+import android.provider.Settings
 import android.view.KeyEvent
-import android.widget.TextView
-import android.widget.Button
-import android.view.animation.Animation
 import android.view.animation.AlphaAnimation
-import java.io.Closeable
+import android.view.animation.Animation
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import com.google.android.things.device.TimeManager
-import java.io.Console
+import java.io.Closeable
 import java.util.*
 
 
@@ -59,6 +59,12 @@ class MainActivity : Activity() {
         val timeManager = TimeManager.getInstance()
         timeManager.setTimeFormat(TimeManager.FORMAT_24)
         timeManager.setTimeZone("Europe/Paris")
+
+        //arbitrary timestamp 2019/12/30
+        if (Date().toInstant().epochSecond < 1_577_695_721L){
+            //redirect to set wifi screen to get a time, once set the app will auto resume
+            startActivity(Intent(Settings.ACTION_WIFI_SETTINGS));
+        }
 
         buttons = Buttons()
         buzzer = Buzzer()
