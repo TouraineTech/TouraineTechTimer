@@ -16,4 +16,6 @@
     <string name="pascal">Pascal (B)</string>
     <string name="lovelace">Lovelace (C)</string>
     <string name="roomName">Salle \n%1$s</string>
+    <string name="td1">td1</string>
+    <string name="td2">td2</string>
 </resources>

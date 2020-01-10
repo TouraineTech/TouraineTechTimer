@@ -82,8 +82,8 @@
       "time": "12:45",
       "talk": {
         "speakers": [
-          "mnKCXR65CudbqcmnzEonfNGs1Jk2",
-          "JkWN4X6967cvBrV2x8vKf1QrHS93"
+          "JkWN4X6967cvBrV2x8vKf1QrHS93",
+          "mnKCXR65CudbqcmnzEonfNGs1Jk2"
         ],
         "id": "vzGargOlA8voJIxO4BLz",
         "name": "Pair Design : Un moyen de concevoir à deux ou plus"
@@ -387,10 +387,11 @@
       "time": "10:10",
       "talk": {
         "speakers": [
-          "U0h27oWjIEX6SyideyIpOoPXtYs2"
+          "lKpZ3RoHJATLjiQyIcPV1xsJJ203",
+          "IxJJoBIKX0bIfQHni4zoN62YpH12"
         ],
-        "id": "SYJIDy5JPhQuABdiT7Gv",
-        "name": "Java server-side: 20 years old and still innovative!"
+        "id": "M7nW2FKPHbF2FpNWqNMx",
+        "name": "Accessibilité : et si on laissait les utilisateurs personnaliser l’interface ?"
       }
     },
     {
@@ -405,10 +406,10 @@
       "time": "11:10",
       "talk": {
         "speakers": [
-          "QjQCCyUhBDOdIpK6CIGSjJwd8RE3"
+          "aHchGCaQStWhoqQtDKBjBpkEnLF2"
         ],
-        "id": "wqcmtLstTNKvYUFdh4ai",
-        "name": "Stateless Microservice Security via MicroProfile JWT"
+        "id": "duZ9XQ4TxP79Q1WiOyVe",
+        "name": "Une caméra 📹 en DIY sur une mangeoire d'oiseau 🐦  au milieu d’un jardin 🌳 ?"
       }
     },
     {
@@ -423,10 +424,10 @@
       "time": "12:20",
       "talk": {
         "speakers": [
-          "MKkYzwlXx6dLM9cfE5vXYqJo5d43"
+          "iXIL5MO7gUW8RFHEx4Q7qjxKI662"
         ],
-        "id": "iDWSjGfWX8OLxBppd8PC",
-        "name": "Tips pour combattre le syndrome de l'imposteur"
+        "id": "W625dqFOD8C4lUJwi8lk",
+        "name": "Optimiser le codeur pour optimiser le code (bonnes pratiques d'organisation personnelle à destination des développeuses et développeurs)"
       }
     },
     {
@@ -441,10 +442,10 @@
       "time": "12:45",
       "talk": {
         "speakers": [
-          "9g2TJuw97VMd8Zwn9y2x0g0w7SB2"
+          "24si0s4B8lYEwbg5d4sshrMyklS2"
         ],
-        "id": "yUtgGDeJyLq57mK86q9g",
-        "name": "Postgresql + json : bye bye JPA et passe le bonjour à mongo"
+        "id": "H6hSWT3gMPPhoV2bPY5k",
+        "name": "Secretary Vs Dev : retour d expérience d'une assistante administrative dans un dev studio"
       }
     },
     {
@@ -459,10 +460,10 @@
       "time": "13:30",
       "talk": {
         "speakers": [
-          "DOf7nxshJKYoWia2QQX8cTkJtRL2"
+          "JLEDSTiwyJX5AxGAw1GZjv7X23a2"
         ],
-        "id": "VhehXV2aodPu46LuhxbF",
-        "name": "⏰ CSS Clockwork"
+        "id": "fW4yvmVxjXb57vQJhIXu",
+        "name": "Mon p*** de voyant moteur est encore allumé ! Comment debugger mon moteur ? Plongeon dans les entrailles des calculateurs moteur"
       }
     },
     {
@@ -477,10 +478,11 @@
       "time": "14:30",
       "talk": {
         "speakers": [
-          "ZdNase96oBSI6QdrWySX9eCtJgs1"
+          "977YQDolbxde0ito7I2dUiee2ap1",
+          "M9fbPRwPVMUL2CDG64muamrcOqs2"
         ],
-        "id": "XvpmnMltEJ6PNv0LBf4e",
-        "name": "Comment se faire hacker bien comme il faut!"
+        "id": "HDbur1UG6PNYC48rcBZ0",
+        "name": "Gophers le retour"
       }
     },
     {
@@ -495,11 +497,10 @@
       "time": "15:45",
       "talk": {
         "speakers": [
-          "kfhDyJchjlSYR5Z8c8gVRBNUaCE3",
-          "sNc6usDmBJMSPh0Z66CwVaE9xkv2"
+          "FjmEcWGtDNUqKmkd0Pwu24oL87G2"
         ],
-        "id": "1jiAsaKrbfhsEewsXaSH",
-        "name": "Cypress, l’outil qui va vous faire aimer les tests End-to-End !"
+        "id": "WrRpxCNMyaKVCc6aHsPa",
+        "name": "Gardez un oeil sur vos métriques avec Prometheus et Grafana"
       }
     },
     {
@@ -514,10 +515,10 @@
       "time": "16:45",
       "talk": {
         "speakers": [
-          "PV4LOlB4jLRPDCCxXT6BBbsxNA93"
+          "PuG5s59DFfdNEToSJt5FfWNZZh03"
         ],
-        "id": "3QQqWeUo8kj2R6AlzJIP",
-        "name": "Trucs et astuces pour consommer une API REST"
+        "id": "m8pvkEKdZYVIxBQL3v4z",
+        "name": "Notif qui saoule n'amasse pas foule ..."
       }
     },
     {
@@ -534,6 +535,202 @@
         "speakers": [],
         "id": "keynoteCloture",
         "name": "Keynote de clôture"
+      }
+    }
+  ],
+  "TD1": [
+    {
+      "time": "08:00",
+      "talk": {
+        "speakers": [],
+        "id": "welcome",
+        "name": "👋 Accueil et petit déjeuner"
+      }
+    },
+    {
+      "time": "09:50",
+      "talk": {
+        "speakers": [],
+        "id": "ptitdej",
+        "name": "🥐 Suite du petit déjeuner (20 min)"
+      }
+    },
+    {
+      "time": "10:10",
+      "talk": {
+        "speakers": [
+          "rDKV0gUOk0O4WU9tpknPAngMF9A3",
+          "CxYwtJCDgEbs0sJ0OxkghkwUJ4G3"
+        ],
+        "id": "2nUoRfU9qblCBji2OHWx",
+        "name": "istio ⛵️par la pratique !"
+      }
+    },
+    {
+      "time": "12:00",
+      "talk": {
+        "speakers": [],
+        "id": "dejeuner",
+        "name": "🍽 Pause déjeuner (jusqu'à 13h30, 20 min avant le premier Quickie)"
+      }
+    },
+    {
+      "time": "12:20",
+      "talk": {
+        "speakers": [
+          "LBXSNoYRKbWwvirzjnpHzMk03cM2"
+        ],
+        "id": "tYSdKQvuEtgH7nLokY0e",
+        "name": "🏡 Full-remote : comment réussir à travailler en équipe ?"
+      }
+    },
+    {
+      "time": "12:35",
+      "talk": {
+        "speakers": [],
+        "id": "soSmall",
+        "name": ""
+      }
+    },
+    {
+      "time": "12:45",
+      "talk": {
+        "speakers": [
+          "cjA6fXpkQvUT8wRMBipQnFUTDeJ2"
+        ],
+        "id": "41fdl7fni2rFn601lpxx",
+        "name": "Améliorez votre façon de taper du code au quotidien"
+      }
+    },
+    {
+      "time": "13:00",
+      "talk": {
+        "speakers": [],
+        "id": "dejeuner2",
+        "name": "🍽 fin de la pause déjeuner (30 min)"
+      }
+    },
+    {
+      "time": "13:30",
+      "talk": {
+        "speakers": [
+          "lVp57FlvF1fKYwqk8yNinu3uFv92",
+          "lVp57FlvF1fKYwqk8yNinu3uFv93",
+          "lVp57FlvF1fKYwqk8yNinu3uFv94"
+        ],
+        "id": "vZU5mTokXupZBLNjA8BB",
+        "name": "« Ça part en prod ! » Testez la résilience de votre appli par le chaos."
+      }
+    },
+    {
+      "time": "15:20",
+      "talk": {
+        "speakers": [],
+        "id": "pm2",
+        "name": "☕ Pause café (25 min)"
+      }
+    },
+    {
+      "time": "16:35",
+      "talk": {
+        "speakers": [],
+        "id": "gouter",
+        "name": "☕ Pause café (10 min)"
+      }
+    },
+    {
+      "time": "17:35",
+      "talk": {
+        "speakers": [],
+        "id": "soSmall2",
+        "name": ""
+      }
+    }
+  ],
+  "TD2": [
+    {
+      "time": "08:00",
+      "talk": {
+        "speakers": [],
+        "id": "welcome",
+        "name": "👋 Accueil et petit déjeuner"
+      }
+    },
+    {
+      "time": "09:50",
+      "talk": {
+        "speakers": [],
+        "id": "ptitdej",
+        "name": "🥐 Suite du petit déjeuner (20 min)"
+      }
+    },
+    {
+      "time": "12:00",
+      "talk": {
+        "speakers": [],
+        "id": "dejeuner",
+        "name": "🍽 Pause déjeuner (jusqu'à 13h30, 20 min avant le premier Quickie)"
+      }
+    },
+    {
+      "time": "12:20",
+      "talk": {
+        "speakers": [
+          "PRuMzxC7NVbsVnJP07AbHR2cNFx2"
+        ],
+        "id": "OSeRNhvgAv183XS9gPAA",
+        "name": "Event loop et asynchronisme en JavaScript"
+      }
+    },
+    {
+      "time": "12:35",
+      "talk": {
+        "speakers": [],
+        "id": "soSmall",
+        "name": ""
+      }
+    },
+    {
+      "time": "12:45",
+      "talk": {
+        "speakers": [
+          "lrI6gAvw7EU8fseDc5NfOoYWQJx2",
+          "qVuC10841Ecu0FB0eIHE0uqtwup2"
+        ],
+        "id": "vBXehLE9i3ShOGZBeNUQ",
+        "name": "L'Esport à un sport comme les autres "
+      }
+    },
+    {
+      "time": "13:00",
+      "talk": {
+        "speakers": [],
+        "id": "dejeuner2",
+        "name": "🍽 fin de la pause déjeuner (30 min)"
+      }
+    },
+    {
+      "time": "15:20",
+      "talk": {
+        "speakers": [],
+        "id": "pm2",
+        "name": "☕ Pause café (25 min)"
+      }
+    },
+    {
+      "time": "16:35",
+      "talk": {
+        "speakers": [],
+        "id": "gouter",
+        "name": "☕ Pause café (10 min)"
+      }
+    },
+    {
+      "time": "17:35",
+      "talk": {
+        "speakers": [],
+        "id": "soSmall2",
+        "name": ""
       }
     }
   ]

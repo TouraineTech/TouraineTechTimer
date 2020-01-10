@@ -48,6 +48,12 @@ class RoomChoiceActivity : Activity() {
         findViewById<Button>(R.id.room3Btn).setOnClickListener {
             launchAutoTimerActivityWithRoomNumber("LoveLace")
         }
+        findViewById<Button>(R.id.room4Btn).setOnClickListener {
+            launchAutoTimerActivityWithRoomNumber("TD1")
+        }
+        findViewById<Button>(R.id.room5Btn).setOnClickListener {
+            launchAutoTimerActivityWithRoomNumber("TD2")
+        }
 
     }
 

@@ -81,7 +81,7 @@ class AutoTimerActivity : Activity() {
         var parsed = LocalTime.parse(room[index].time, DateTimeFormatter.ofPattern("HH:mm"))
         val last = LocalTime.parse(room[room.size-1].time, DateTimeFormatter.ofPattern("HH:mm"))
         if (now.isAfter(last)) {
-            return 0
+            return 1
         }
         while (parsed.isBefore(now)) {
             index++
@@ -149,6 +149,8 @@ class AutoTimerActivity : Activity() {
             "Turing" -> room = rooms.Turing
             "Pascal" -> room = rooms.Pascal
             "LoveLace" -> room = rooms.LoveLace
+            "TD1" -> room = rooms.TD1
+            "TD2" -> room = rooms.TD2
         }
 
         val speakerText = resources.openRawResource(R.raw.speakers).bufferedReader().use { it.readText() }
@@ -192,7 +194,7 @@ class AutoTimerActivity : Activity() {
     }
 }
 
-data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val LoveLace: Array<Time>) {
+data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val LoveLace: Array<Time>, val TD1: Array<Time>, val TD2: Array<Time>) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -202,6 +204,8 @@ data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val LoveLace:
         if (!Turing.contentEquals(other.Turing)) return false
         if (!Pascal.contentEquals(other.Pascal)) return false
         if (!LoveLace.contentEquals(other.LoveLace)) return false
+        if (!TD1.contentEquals(other.TD1)) return false
+        if (!TD2.contentEquals(other.TD2)) return false
 
         return true
     }
