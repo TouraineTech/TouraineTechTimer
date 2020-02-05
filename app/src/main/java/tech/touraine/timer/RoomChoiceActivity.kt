@@ -46,7 +46,7 @@ class RoomChoiceActivity : Activity() {
             launchAutoTimerActivityWithRoomNumber("Pascal")
         }
         findViewById<Button>(R.id.room3Btn).setOnClickListener {
-            launchAutoTimerActivityWithRoomNumber("LoveLace")
+            launchAutoTimerActivityWithRoomNumber("Lovelace")
         }
         findViewById<Button>(R.id.room4Btn).setOnClickListener {
             launchAutoTimerActivityWithRoomNumber("TD1")
@@ -76,7 +76,7 @@ class RoomChoiceActivity : Activity() {
                 true
             }
             KeyEvent.KEYCODE_C -> {
-                launchAutoTimerActivityWithRoomNumber("LoveLace")
+                launchAutoTimerActivityWithRoomNumber("Lovelace")
                 true
             }
             else -> super.onKeyDown(keyCode, event)

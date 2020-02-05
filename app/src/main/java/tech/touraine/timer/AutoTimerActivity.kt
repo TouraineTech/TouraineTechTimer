@@ -148,7 +148,7 @@ class AutoTimerActivity : Activity() {
         when(currentRoomName) {
             "Turing" -> room = rooms.Turing
             "Pascal" -> room = rooms.Pascal
-            "LoveLace" -> room = rooms.LoveLace
+            "Lovelace" -> room = rooms.Lovelace
             "TD1" -> room = rooms.TD1
             "TD2" -> room = rooms.TD2
         }
@@ -194,7 +194,7 @@ class AutoTimerActivity : Activity() {
     }
 }
 
-data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val LoveLace: Array<Time>, val TD1: Array<Time>, val TD2: Array<Time>) {
+data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val Lovelace: Array<Time>, val TD1: Array<Time>, val TD2: Array<Time>) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -203,7 +203,7 @@ data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val LoveLace:
 
         if (!Turing.contentEquals(other.Turing)) return false
         if (!Pascal.contentEquals(other.Pascal)) return false
-        if (!LoveLace.contentEquals(other.LoveLace)) return false
+        if (!Lovelace.contentEquals(other.Lovelace)) return false
         if (!TD1.contentEquals(other.TD1)) return false
         if (!TD2.contentEquals(other.TD2)) return false
 
@@ -213,7 +213,7 @@ data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val LoveLace:
     override fun hashCode(): Int {
         var result = Turing.contentHashCode()
         result = 31 * result + Pascal.contentHashCode()
-        result = 31 * result + LoveLace.contentHashCode()
+        result = 31 * result + Lovelace.contentHashCode()
         return result
     }
 }
