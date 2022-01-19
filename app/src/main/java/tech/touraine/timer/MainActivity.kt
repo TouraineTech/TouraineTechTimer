@@ -12,9 +12,13 @@ import android.view.animation.Animation
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.things.device.TimeManager
+//import com.google.android.things.device.TimeManager
 import java.io.Closeable
 import java.util.*
+import android.content.ActivityNotFoundException
+
+import android.content.ComponentName
+import android.view.View
 
 
 /**
@@ -50,24 +54,20 @@ class MainActivity : Activity() {
     private lateinit var countDownTimer: CountDownTimer
     private var running: Boolean = false
     private var once:Boolean = false
-    private lateinit var buttons: Buttons
-    private lateinit var buzzer: Buzzer
+//    private lateinit var buttons: Buttons
+//    private lateinit var buzzer: Buzzer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val timeManager = TimeManager.getInstance()
+/*        val timeManager = TimeManager.getInstance()
         timeManager.setTimeFormat(TimeManager.FORMAT_24)
         timeManager.setTimeZone("Europe/Paris")
+*/
 
-        //arbitrary timestamp 2019/12/30
-        if (Date().toInstant().epochSecond < 1_577_695_721L){
-            //redirect to set wifi screen to get a time, once set the app will auto resume
-            startActivity(Intent(Settings.ACTION_WIFI_SETTINGS));
-        }
 
-        buttons = Buttons()
-        buzzer = Buzzer()
+//        buttons = Buttons()
+//        buzzer = Buzzer()
         setContentView(R.layout.activity_main)
         timerTextView = findViewById(R.id.timerTextView)
         timerTextView.text = getTimeStringFromMillis(duration)
@@ -86,24 +86,45 @@ class MainActivity : Activity() {
             setTimerValues(DURATION_15_MINUTES, QUESTION_TIME_15_MINUTES)
         }
 
+        findViewById<View>(R.id.imageView).setOnClickListener {
+            //arbitrary timestamp 2019/12/30
+
+            //redirect to set wifi screen to get a time, once set the app will auto resume
+                   openWifiSettings()
+
+        }
+
         val buttonMinus1Minutes: Button = findViewById(R.id.buttonMinus1Minutes)
         buttonMinus1Minutes.setOnClickListener { setTimerValues(duration - 60000, questionTime) }
         val buttonPlus1Minutes: Button = findViewById(R.id.buttonPlus1Minutes)
         buttonPlus1Minutes.setOnClickListener { setTimerValues(duration + 60000, questionTime) }
 
         findViewById<Button>(R.id.autoTimer).setOnClickListener {
-            arrayOf(buttons, buzzer).forEach(Closeable::close)
+            //arrayOf(buttons, buzzer).forEach(Closeable::close)
             startActivity(Intent(this, RoomChoiceActivity::class.java))
+        }
+    }
+
+    private fun openWifiSettings() {
+        try {
+            val intent = Intent(Intent.ACTION_MAIN, null)
+            intent.addCategory(Intent.CATEGORY_LAUNCHER)
+            val cn = ComponentName("com.android.settings", "com.android.settings.wifi.WifiSettings")
+            intent.component = cn
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        } catch (ignored: ActivityNotFoundException) {
+            startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        arrayOf(buttons, buzzer).forEach(Closeable::close)
+        //arrayOf(buttons, buzzer).forEach(Closeable::close)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        buzzer.play(71.toDouble(), 300 * 0.8)
+    //    buzzer.play(71.toDouble(), 300 * 0.8)
         return when (keyCode) {
             KeyEvent.KEYCODE_A -> {
                 startStopFunction(findViewById(R.id.buttonStart))
@@ -153,14 +174,14 @@ class MainActivity : Activity() {
                 if (millisUntilFinished < questionTime && !once) {
                     once = true
                     timerTextView.startAnimation(alphaAnimation(1500))
-                    buzzer.play(71.toDouble(), 5000.0)
+                   // buzzer.play(71.toDouble(), 5000.0)
                 }
             }
 
             override fun onFinish() {
                 timerTextView.setTextColor(Color.RED)
                 timerTextView.startAnimation(alphaAnimation(500))
-                buzzer.play(71.toDouble(), 20000.0)
+                //buzzer.play(71.toDouble(), 20000.0)
                 running = false
                 once = false
             }
