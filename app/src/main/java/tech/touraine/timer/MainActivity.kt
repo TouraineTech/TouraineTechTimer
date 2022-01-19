@@ -1,12 +1,14 @@
 package tech.touraine.timer
 
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.provider.Settings
 import android.view.KeyEvent
+import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.Button
@@ -60,12 +62,6 @@ class MainActivity : Activity() {
         timeManager.setTimeFormat(TimeManager.FORMAT_24)
         timeManager.setTimeZone("Europe/Paris")
 
-        //arbitrary timestamp 2019/12/30
-        if (Date().toInstant().epochSecond < 1_577_695_721L){
-            //redirect to set wifi screen to get a time, once set the app will auto resume
-            startActivity(Intent(Settings.ACTION_WIFI_SETTINGS));
-        }
-
         buttons = Buttons()
         buzzer = Buzzer()
         setContentView(R.layout.activity_main)
@@ -84,6 +80,13 @@ class MainActivity : Activity() {
 
         findViewById<Button>(R.id.button15Minutes).setOnClickListener {
             setTimerValues(DURATION_15_MINUTES, QUESTION_TIME_15_MINUTES)
+        }
+
+        findViewById<View>(R.id.imageView).setOnClickListener {
+            //redirect to set wifi screen to get a time, once set the app will auto resume
+            startActivity(Intent().apply {
+                component = ComponentName("com.android.iotlauncher.ota", "com.android.iotlauncher.DefaultIoTLauncher")
+            });
         }
 
         val buttonMinus1Minutes: Button = findViewById(R.id.buttonMinus1Minutes)
