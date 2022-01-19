@@ -1,6 +1,10 @@
 package tech.touraine.timer
 
+
 import android.app.Activity
+import android.app.TimePickerDialog
+import android.app.TimePickerDialog.OnTimeSetListener
+import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
@@ -13,10 +17,11 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.google.android.things.device.TimeManager
 import java.io.Closeable
-import java.util.*
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 
 /**
@@ -51,19 +56,22 @@ class MainActivity : Activity() {
     private var questionTime: Long = QUESTION_TIME_50_MINUTES
     private lateinit var countDownTimer: CountDownTimer
     private var running: Boolean = false
-    private var once:Boolean = false
+    private var once: Boolean = false
+    private lateinit var timeManager: TimeManager
     private lateinit var buttons: Buttons
     private lateinit var buzzer: Buzzer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val timeManager = TimeManager.getInstance()
+        timeManager = TimeManager.getInstance()
         timeManager.setTimeFormat(TimeManager.FORMAT_24)
         timeManager.setTimeZone("Europe/Paris")
 
+
         buttons = Buttons()
         buzzer = Buzzer()
+
         setContentView(R.layout.activity_main)
         timerTextView = findViewById(R.id.timerTextView)
         timerTextView.text = getTimeStringFromMillis(duration)
@@ -82,6 +90,10 @@ class MainActivity : Activity() {
             setTimerValues(DURATION_15_MINUTES, QUESTION_TIME_15_MINUTES)
         }
 
+        findViewById<View>(R.id.textClock).setOnClickListener {
+            openSetupTimeModal()
+        }
+
         findViewById<View>(R.id.imageView).setOnClickListener {
             //redirect to set wifi screen to get a time, once set the app will auto resume
             startActivity(Intent().apply {
@@ -97,6 +109,32 @@ class MainActivity : Activity() {
         findViewById<Button>(R.id.autoTimer).setOnClickListener {
             arrayOf(buttons, buzzer).forEach(Closeable::close)
             startActivity(Intent(this, RoomChoiceActivity::class.java))
+        }
+    }
+
+    private fun openSetupTimeModal() {
+        val timeSetListener = OnTimeSetListener { view, hourOfDay, minute ->
+            val localDateTime = LocalDateTime.of(2022, 1, 21, hourOfDay, minute)
+            val zdt: ZonedDateTime = localDateTime.atZone(ZoneId.of("Europe/Paris"))
+            timeManager.setTime(zdt.toInstant().toEpochMilli())
+        }
+
+        val timePickerDialog = TimePickerDialog(
+                this, timeSetListener, 9, 0, true
+        )
+        timePickerDialog.show()
+    }
+
+    private fun openWifiSettings() {
+        try {
+            val intent = Intent(Intent.ACTION_MAIN, null)
+            intent.addCategory(Intent.CATEGORY_LAUNCHER)
+            val cn = ComponentName("com.android.settings", "com.android.settings.wifi.WifiSettings")
+            intent.component = cn
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        } catch (ignored: ActivityNotFoundException) {
+            startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
         }
     }
 
@@ -149,7 +187,7 @@ class MainActivity : Activity() {
     }
 
     private fun getCountDown(): CountDownTimer {
-        return object: CountDownTimer(duration, 1000) {
+        return object : CountDownTimer(duration, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timerTextView.text = getTimeStringFromMillis(millisUntilFinished)
                 running = true
