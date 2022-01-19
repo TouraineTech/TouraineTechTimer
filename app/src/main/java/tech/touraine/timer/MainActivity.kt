@@ -19,6 +19,14 @@ import android.content.ActivityNotFoundException
 
 import android.content.ComponentName
 import android.view.View
+import android.app.TimePickerDialog
+import android.app.TimePickerDialog.OnTimeSetListener
+import android.widget.TimePicker
+import com.google.android.things.device.TimeManager
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
 
 
 /**
@@ -53,17 +61,17 @@ class MainActivity : Activity() {
     private var questionTime: Long = QUESTION_TIME_50_MINUTES
     private lateinit var countDownTimer: CountDownTimer
     private var running: Boolean = false
-    private var once:Boolean = false
+    private var once: Boolean = false
+    private lateinit var timeManager: TimeManager
 //    private lateinit var buttons: Buttons
 //    private lateinit var buzzer: Buzzer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-/*        val timeManager = TimeManager.getInstance()
+        timeManager = TimeManager.getInstance()
         timeManager.setTimeFormat(TimeManager.FORMAT_24)
         timeManager.setTimeZone("Europe/Paris")
-*/
 
 
 //        buttons = Buttons()
@@ -87,11 +95,7 @@ class MainActivity : Activity() {
         }
 
         findViewById<View>(R.id.imageView).setOnClickListener {
-            //arbitrary timestamp 2019/12/30
-
-            //redirect to set wifi screen to get a time, once set the app will auto resume
-                   openWifiSettings()
-
+            openSetupTimeModal()
         }
 
         val buttonMinus1Minutes: Button = findViewById(R.id.buttonMinus1Minutes)
@@ -103,6 +107,19 @@ class MainActivity : Activity() {
             //arrayOf(buttons, buzzer).forEach(Closeable::close)
             startActivity(Intent(this, RoomChoiceActivity::class.java))
         }
+    }
+
+    private fun openSetupTimeModal() {
+        val timeSetListener = OnTimeSetListener { view, hourOfDay, minute ->
+            val localDateTime = LocalDateTime.of(2022, 1, 21, hourOfDay, minute)
+            val zdt: ZonedDateTime = localDateTime.atZone(ZoneId.of("Europe/Paris"))
+            timeManager.setTime(zdt.toInstant().toEpochMilli())
+        }
+
+        val timePickerDialog = TimePickerDialog(
+            this, timeSetListener, 9, 0, true
+        )
+        timePickerDialog.show()
     }
 
     private fun openWifiSettings() {
@@ -124,7 +141,7 @@ class MainActivity : Activity() {
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-    //    buzzer.play(71.toDouble(), 300 * 0.8)
+        //    buzzer.play(71.toDouble(), 300 * 0.8)
         return when (keyCode) {
             KeyEvent.KEYCODE_A -> {
                 startStopFunction(findViewById(R.id.buttonStart))
@@ -167,14 +184,14 @@ class MainActivity : Activity() {
     }
 
     private fun getCountDown(): CountDownTimer {
-        return object: CountDownTimer(duration, 1000) {
+        return object : CountDownTimer(duration, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timerTextView.text = getTimeStringFromMillis(millisUntilFinished)
                 running = true
                 if (millisUntilFinished < questionTime && !once) {
                     once = true
                     timerTextView.startAnimation(alphaAnimation(1500))
-                   // buzzer.play(71.toDouble(), 5000.0)
+                    // buzzer.play(71.toDouble(), 5000.0)
                 }
             }
 
