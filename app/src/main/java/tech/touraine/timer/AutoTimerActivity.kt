@@ -132,8 +132,8 @@ class AutoTimerActivity : Activity() {
     }
 
     private fun initResources() {
-        currentRoomName = intent.getStringExtra("roomName")
-        currentDay = intent.getStringExtra("day")
+        currentRoomName = intent.getStringExtra("roomName") ?: "N/A"
+        currentDay = intent.getStringExtra("day") ?: "N/A"
         val gson = GsonBuilder().setPrettyPrinting().create()
         val roomTimeTalks = resources.openRawResource(R.raw.room_time_talks).bufferedReader().use { it.readText() }
         val days = gson.fromJson(roomTimeTalks, Days::class.java)

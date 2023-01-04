@@ -32,7 +32,7 @@ class RoomChoiceActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        currentDay = intent.getStringExtra("day")
+        currentDay = intent.getStringExtra("day") ?: "N/A"
 
         setContentView(R.layout.activity_room_choice)
 

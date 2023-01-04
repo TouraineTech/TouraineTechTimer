@@ -7,8 +7,10 @@ import android.app.TimePickerDialog.OnTimeSetListener
 import android.content.ComponentName
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.support.annotation.RequiresApi
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -53,14 +55,17 @@ class MainActivity : Activity() {
     private lateinit var countDownTimer: CountDownTimer
     private var running: Boolean = false
     private var once: Boolean = false
-    private lateinit var timeManager: TimeManager
+    private lateinit var timeManager: Any
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        timeManager = TimeManager.getInstance()
-        timeManager.setTimeFormat(TimeManager.FORMAT_24)
-        timeManager.setTimeZone("Europe/Paris")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val timeManager = TimeManager.getInstance()
+            timeManager.setTimeFormat(TimeManager.FORMAT_24)
+            timeManager.setTimeZone("Europe/Paris")
+            this.timeManager = timeManager
+        }
 
         setContentView(R.layout.activity_main)
         timerTextView = findViewById(R.id.timerTextView)
@@ -81,7 +86,9 @@ class MainActivity : Activity() {
         }
 
         findViewById<View>(R.id.textClock).setOnClickListener {
-            openSetupTimeModal()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                openSetupTimeModal()
+            }
         }
 
         findViewById<View>(R.id.imageView).setOnClickListener {
@@ -101,11 +108,12 @@ class MainActivity : Activity() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun openSetupTimeModal() {
         val timeSetListener = OnTimeSetListener { view, hourOfDay, minute ->
             val localDateTime = LocalDateTime.of(2022, 1, 21, hourOfDay, minute)
             val zdt: ZonedDateTime = localDateTime.atZone(ZoneId.of("Europe/Paris"))
-            timeManager.setTime(zdt.toInstant().toEpochMilli())
+            (timeManager as TimeManager).setTime(zdt.toInstant().toEpochMilli())
         }
 
         val timePickerDialog = TimePickerDialog(
