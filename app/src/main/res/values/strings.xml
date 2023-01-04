@@ -1,21 +1,23 @@
 <resources>
     <string name="app_name">Timer</string>
-    <string name="start_Btn">Start (A)</string>
-    <string name="stop_Btn">Stop (A)</string>
+    <string name="start_Btn">Start</string>
+    <string name="stop_Btn">Stop</string>
     <string name="_15_00">15:00</string>
-    <string name="_15_00_Btn">15:00 (C)</string>
+    <string name="_15_00_Btn">15:00</string>
     <string name="_50_00">50:00</string>
-    <string name="_50_00_Btn">50:00 (B)</string>
+    <string name="_50_00_Btn">50:00</string>
     <string name="plus1MinuteBtn">+ 1 Min</string>
     <string name="minus1MinuteBtn">- 1 Min</string>
     <string name="autoTimer">Auto</string>
-    <string name="manualTimer">Manual (A)</string>
+    <string name="manualTimer">Manual</string>
     <string name="nextTalk">Prochain sujet : </string>
     <string name="bySpeaker"> par </string>
-    <string name="turing">Turing (A)</string>
-    <string name="pascal">Pascal (B)</string>
-    <string name="lovelace">Lovelace (C)</string>
+    <string name="turing">Turing</string>
+    <string name="pascal">Pascal</string>
+    <string name="lovelace">Lovelace</string>
     <string name="roomName">Salle \n%1$s</string>
-    <string name="td1">td1</string>
-    <string name="td2">td2</string>
+    <string name="td1">td 1</string>
+    <string name="day1">Jour 1</string>
+    <string name="day2">Jour 2</string>
+    <string name="tourainetechLogo">TouraineTech logo</string>
 </resources>

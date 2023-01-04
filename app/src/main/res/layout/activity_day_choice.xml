@@ -8,56 +8,30 @@
     tools:context=".RoomChoiceActivity">
 
     <Button
-        android:id="@+id/room1Btn"
+        android:id="@+id/day1Btn"
         style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:padding="16dp"
-        android:text="@string/turing"
+        android:text="@string/day1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/room2Btn"
+        app:layout_constraintEnd_toStartOf="@+id/day2Btn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/room2Btn"
+        android:id="@+id/day2Btn"
         style="@style/button"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:padding="16dp"
-        android:text="@string/pascal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/room3Btn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/room1Btn"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/room3Btn"
-        style="@style/button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:padding="16dp"
-        android:text="@string/lovelace"
+        android:text="@string/day2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/room2Btn"
+        app:layout_constraintStart_toEndOf="@+id/day1Btn"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/room4Btn"
-        style="@style/button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:padding="16dp"
-        android:text="@string/td1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/room2Btn"
-        app:layout_constraintVertical_bias="0.451" />
 
     <ImageView
         android:id="@+id/imageView"

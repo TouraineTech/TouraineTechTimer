@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.KeyEvent
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.Button
@@ -13,7 +12,6 @@ import android.widget.TextView
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import tech.touraine.timer.data.Speaker
-import java.io.Closeable
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
@@ -40,9 +38,6 @@ import java.time.temporal.ChronoUnit
  */
 class AutoTimerActivity : Activity() {
 
-    private lateinit var buttons: Buttons
-    private lateinit var buzzer: Buzzer
-
     private lateinit var timerTextView: TextView
     private lateinit var rooms: Rooms
     private lateinit var room: Array<Time>
@@ -55,11 +50,10 @@ class AutoTimerActivity : Activity() {
     private var once:Boolean = false
     private var currentTimeIndex: Int = 0
     private lateinit var currentRoomName: String
+    private lateinit var currentDay: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        buttons = Buttons()
-        buzzer = Buzzer()
 
         setContentView(R.layout.activity_auto_timer)
         timerTextView = findViewById(R.id.timerTextView)
@@ -97,12 +91,10 @@ class AutoTimerActivity : Activity() {
                 if (millisUntilFinished < questionTime && !once) {
                     once = true
                     timerTextView.startAnimation(alphaAnimation(1500))
-                    buzzer.play(71.toDouble(), 3000.0)
                 }
             }
 
             override fun onFinish() {
-                buzzer.play(71.toDouble(), 3000.0)
                 timerTextView.setTextColor(Color.RED)
                 timerTextView.clearAnimation()
                 running = false
@@ -141,16 +133,17 @@ class AutoTimerActivity : Activity() {
 
     private fun initResources() {
         currentRoomName = intent.getStringExtra("roomName")
+        currentDay = intent.getStringExtra("day")
         val gson = GsonBuilder().setPrettyPrinting().create()
         val roomTimeTalks = resources.openRawResource(R.raw.room_time_talks).bufferedReader().use { it.readText() }
-        rooms = gson.fromJson(roomTimeTalks, Rooms::class.java)
+        val days = gson.fromJson(roomTimeTalks, Days::class.java)
+        rooms = if ("day1" == currentDay) { days.day1 } else { days.day2 }
 
         when(currentRoomName) {
             "Turing" -> room = rooms.Turing
             "Pascal" -> room = rooms.Pascal
             "Lovelace" -> room = rooms.Lovelace
             "TD1" -> room = rooms.TD1
-            "TD2" -> room = rooms.TD2
         }
 
         val speakerText = resources.openRawResource(R.raw.speakers).bufferedReader().use { it.readText() }
@@ -158,23 +151,6 @@ class AutoTimerActivity : Activity() {
         speakers
             .filter { it.confirmed }
             .forEach { speakersMap[it.id] = it }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        arrayOf(buttons, buzzer).forEach(Closeable::close)
-    }
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        buzzer.play(71.toDouble(), 300 * 0.8)
-        return when (keyCode) {
-            KeyEvent.KEYCODE_A -> {
-                arrayOf(buttons, buzzer).forEach(Closeable::close)
-                startActivity(Intent(this, MainActivity::class.java))
-                true
-            }
-            else -> super.onKeyDown(keyCode, event)
-        }
     }
 
     private fun alphaAnimation(duration: Long): AlphaAnimation {
@@ -194,7 +170,28 @@ class AutoTimerActivity : Activity() {
     }
 }
 
-data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val Lovelace: Array<Time>, val TD1: Array<Time>, val TD2: Array<Time>) {
+data class Days(val day1: Rooms, val day2: Rooms){
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Days
+
+        if (day1 != other.day1) return false
+        if (day2 != other.day2) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = day1.hashCode()
+        result = 31 * result + day2.hashCode()
+        return result
+    }
+}
+
+
+data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val Lovelace: Array<Time>, val TD1: Array<Time>) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -205,7 +202,6 @@ data class Rooms(val Turing: Array<Time>, val Pascal: Array<Time>, val Lovelace:
         if (!Pascal.contentEquals(other.Pascal)) return false
         if (!Lovelace.contentEquals(other.Lovelace)) return false
         if (!TD1.contentEquals(other.TD1)) return false
-        if (!TD2.contentEquals(other.TD2)) return false
 
         return true
     }
@@ -225,7 +221,7 @@ data class Talk(val id: String, val name: String, val speakers: Array<String>) {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
 
-        other as tech.touraine.timer.Talk
+        other as Talk
 
         if (id != other.id) return false
         if (name != other.name) return false

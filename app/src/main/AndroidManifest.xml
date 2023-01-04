@@ -11,7 +11,8 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen">
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,12 +34,18 @@
         </activity>
         <activity
             android:name=".AutoTimerActivity"
-            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"></activity>
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"/>
         <activity
             android:name=".RoomChoiceActivity"
-            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"></activity>
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"/>
+        <activity
+            android:name=".DayChoiceActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen"/>
 
-        <receiver android:name=".TimeChangeBroadcastReceiver">
+        <receiver android:name=".TimeChangeBroadcastReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.TIME_SET" />
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />

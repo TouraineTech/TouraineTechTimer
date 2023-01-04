@@ -25,36 +25,23 @@ import android.widget.Button
  * @see <a href="https://github.com/androidthings/contrib-drivers#readme">https://github.com/androidthings/contrib-drivers#readme</a>
  *
  */
-class RoomChoiceActivity : Activity() {
-
-    private lateinit var currentDay: String
+class DayChoiceActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_day_choice)
 
-        currentDay = intent.getStringExtra("day")
-
-        setContentView(R.layout.activity_room_choice)
-
-        findViewById<Button>(R.id.room1Btn).setOnClickListener {
-            launchAutoTimerActivityWithRoomNumber("Turing")
+        findViewById<Button>(R.id.day1Btn).setOnClickListener {
+            launchRoomChoiceActivityWithDayNumber("day1")
         }
-        findViewById<Button>(R.id.room2Btn).setOnClickListener {
-            launchAutoTimerActivityWithRoomNumber("Pascal")
-        }
-        findViewById<Button>(R.id.room3Btn).setOnClickListener {
-            launchAutoTimerActivityWithRoomNumber("Lovelace")
-        }
-        findViewById<Button>(R.id.room4Btn).setOnClickListener {
-            launchAutoTimerActivityWithRoomNumber("TD1")
+        findViewById<Button>(R.id.day2Btn).setOnClickListener {
+            launchRoomChoiceActivityWithDayNumber("day2")
         }
     }
 
-    private fun launchAutoTimerActivityWithRoomNumber(roomNumber: String) {
-        val intent = Intent(this, AutoTimerActivity::class.java)
-        intent.putExtra("roomName", roomNumber)
-        intent.putExtra("day", currentDay)
+    private fun launchRoomChoiceActivityWithDayNumber(dayNumber: String) {
+        val intent = Intent(this, RoomChoiceActivity::class.java)
+        intent.putExtra("day", dayNumber)
         startActivity(intent)
     }
-
 }
