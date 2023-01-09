@@ -174,10 +174,10 @@
         "time": "16:45",
         "talk": {
           "speakers": [
-            "yBuTCMIOkLTJMFhtXvj6ulzL4Rp1"
+            "p4lQkz4mvnTox9AZz9nsRV5Iedg1"
           ],
-          "id": "ESyHvSv5gDz2deOwaFkZ",
-          "name": "On peut écouter 1 fois un utilisateur, ou écouter 1 milliard d'utilisateurs."
+          "id": "QL23LjbKcwLMnCVGYAn8",
+          "name": "DALL-E V2 -  un robot et un peintre font de la génération d'image par IA "
         }
       },
       {
@@ -490,6 +490,16 @@
           "speakers": [],
           "id": "dejeuner3",
           "name": ""
+        }
+      },
+      {
+        "time": "13:00",
+        "talk": {
+          "speakers": [
+            "Ny2h9DGprRgd9n6PJYFijyYI0OQ2"
+          ],
+          "id": "ZmvGwBSs3jNHkA7ZDF8v",
+          "name": "Les reconvertis: cette nouvelle vague de profils dans le dev"
         }
       },
       {
@@ -827,10 +837,10 @@
         "time": "14:30",
         "talk": {
           "speakers": [
-            "p4lQkz4mvnTox9AZz9nsRV5Iedg1"
+            "yBuTCMIOkLTJMFhtXvj6ulzL4Rp1"
           ],
-          "id": "QL23LjbKcwLMnCVGYAn8",
-          "name": "DALL-E V2 -  un robot et un peintre font de la génération d'image par IA "
+          "id": "ESyHvSv5gDz2deOwaFkZ",
+          "name": "On peut écouter 1 fois un utilisateur, ou écouter 1 milliard d'utilisateurs."
         }
       },
       {
