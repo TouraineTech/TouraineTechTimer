@@ -687,5 +687,16 @@
     "company": "Oracle",
     "city": "",
     "confirmed": true
+  },
+  {
+    "id": "Ny2h9DGprRgd9n6PJYFijyYI0OQ2",
+    "name": "Helvira G",
+    "avatar": "https://pbs.twimg.com/profile_images/1601255670598320131/UO3hhXS9_400x400.jpg",
+    "github": "HelviraG",
+    "twitter": "helvira_g",
+    "bio": "Développeuse web, essentiellement dresseuse d'éléphpants, depuis plus de 3 ans, c'est avec l'envie de montrer aux femmes que le développement est une voie professionnelle envisageable qu'Helvira crée Motiv'Her en 2021.",
+    "company": null,
+    "city": "",
+    "confirmed": true
   }
 ]
